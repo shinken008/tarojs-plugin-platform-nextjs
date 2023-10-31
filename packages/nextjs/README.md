@@ -251,3 +251,8 @@ yarn lerna run build
 ## License
 
 [MIT](./LICENSE)
+
+## 发布
+```sh
+npx lerna publish --registry http://ires.58corp.com/repository/npm/ --no-git-tag-version --no-push
+```

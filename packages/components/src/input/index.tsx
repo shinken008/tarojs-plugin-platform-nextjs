@@ -250,8 +250,6 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
         }
         if (typeof customPlaceholderStyle === 'string') {
             placeholderEl.current.setAttribute('style', customPlaceholderStyle)
-        } else {
-            placeholderEl.current.setAttribute('style', '')
         }
     }, [customPlaceholderStyle])
 

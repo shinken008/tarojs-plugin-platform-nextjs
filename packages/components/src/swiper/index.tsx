@@ -89,13 +89,13 @@ export default class Swiper extends React.Component<SwiperProps, Record<string, 
             Object.defineProperty(e, 'detail', {
               enumerable: true,
               value: {
-                current: this.mySwiper.realIndex
+                current: that.mySwiper.realIndex
               }
             })
-            if (this.mySwiper.isBeginning) {
-              this.mySwiper.slideToLoop((this.props.children as any).length - 1, 0)
-            } else if (this.mySwiper.isEnd) {
-              this.mySwiper.slideToLoop(0, 0)
+            if (that.mySwiper.isBeginning) {
+              that.mySwiper.slideToLoop((that.props.children as any).length - 1, 0)
+            } else if (that.mySwiper.isEnd) {
+              that.mySwiper.slideToLoop(0, 0)
             }
           } catch (err) {} // eslint-disable-line no-empty
           that.handleOnAnimationFinish(e)
