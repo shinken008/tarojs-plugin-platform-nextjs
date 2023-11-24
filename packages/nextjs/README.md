@@ -252,11 +252,14 @@ yarn lerna run build
 
 [MIT](./LICENSE)
 
-## 更改版本 commit
+## 更改版本以及 commit
 ```sh
 npx lerna version --exact --no-git-tag-version 2.1.0-alpha.28
 ```
-
+```
+git add .
+git commit -m '提交信息'
+```
 ## 发布
 ```sh
 npx lerna publish --registry http://ires.58corp.com/repository/npm/ --no-git-tag-version --no-push
