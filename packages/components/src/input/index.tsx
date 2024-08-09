@@ -295,6 +295,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
                     {placeholder}
                 </div>
                 <input
+                    {...props}
                     ref={inputEl}
                     className='taro-input_main'
                     name={name}

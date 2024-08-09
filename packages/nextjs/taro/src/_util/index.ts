@@ -1,5 +1,4 @@
-import {ReactInstance} from 'react'
-import ReactDOM from 'react-dom'
+import type { TaroElement } from '@tarojs/runtime'
 
 export function shouldBeObject(target: unknown): {flag: boolean, msg?: string} {
     if (target && typeof target === 'object') {
@@ -17,10 +16,16 @@ export function shouldBeObject(target: unknown): {flag: boolean, msg?: string} {
     }
 }
 
-export function findDOM(inst?: ReactInstance | null | undefined): Element | Text | null {
-    if (inst) {
-        // eslint-disable-next-line react/no-find-dom-node
-        return ReactDOM.findDOMNode(inst)
+export function findDOM(inst?): TaroElement | HTMLElement | Document | undefined {
+    // 由于react 18移除了ReactDOM.findDOMNode方法，修复H5端 Taro.createSelectorQuery设置in(scope)时，报错问题
+      // https://zh-hans.react.dev/reference/react-dom/findDOMNode
+    if (!inst) {
+        return document
+    } else if (inst instanceof HTMLElement) {
+        return inst
+    } else if (inst.$taroPath) {
+        const el = document.getElementById(inst.$taroPath)
+        return el ?? document
     }
     return document.body
 }
